@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Logging.Entities;
+using Logging.Helper;
+using Logging.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Controllers
@@ -10,10 +13,17 @@ namespace Ecommerce.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private ILoggingRepository _loggingRepository;
+        public ValuesController(ILoggingRepository loggingRepository)
+        {
+            _loggingRepository = loggingRepository;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            LoggingHelper.LogException("hunghv3", new Exception("hunghv3"), LogMessageType.Error);
+            _loggingRepository.LogException("hunghv2", new Exception("hunghv123"), LogMessageType.Error);
             return new string[] { "value1", "value2" };
         }
 
