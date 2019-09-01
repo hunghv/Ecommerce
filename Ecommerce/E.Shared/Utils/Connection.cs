@@ -17,7 +17,7 @@ namespace E.Shared.Utils
             return new MySqlConnection(GetConnectionString(dbName, config));
         }
 
-        private static string GetConnectionString(Connection.DatabaseName dbName, IConfiguration config)
+        private static string GetConnectionString(DatabaseName dbName, IConfiguration config)
         {
             var connectionString = config.GetConnectionString(dbName.ToString());
             if (connectionString == null)
