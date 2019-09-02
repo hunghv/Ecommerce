@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'dotnet build'
+        sh 'dotnet build D:/NewWork/ITE/Ecommerce/Ecommerce.sln'
       }
     }
   }
